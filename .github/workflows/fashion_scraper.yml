@@ -2,7 +2,7 @@ name: Fashion Scraper
 
 on:
   schedule:
-    - cron: '30 7 * * *'
+    - cron: '55 7 * * *'
 
 jobs:
   scrape:
