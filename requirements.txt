@@ -3,4 +3,4 @@ openpyxl
 selenium
 webdriver-manager
 python-dotenv
-groq
+google-generativeai
