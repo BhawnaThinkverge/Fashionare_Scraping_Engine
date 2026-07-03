@@ -3,7 +3,7 @@ name: Fashion Scraper
 on:
 
   schedule:
-    - cron: '0 0 */15 * *'
+    - cron: '20 7 * * *'
 
   workflow_dispatch:
 
