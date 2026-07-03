@@ -1,1 +1,58 @@
+name: Fashion Scraper
 
+on:
+
+  schedule:
+    - cron: '0 0 */15 * *'
+
+  workflow_dispatch:
+
+jobs:
+
+  scrape:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Python
+        uses: actions/setup-python@v5
+
+        with:
+          python-version: "3.12"
+
+      - name: Install Libraries
+
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Bewakoof
+
+        run: python bewakoof.py
+
+      - name: Run Elle
+
+        run: python elle.py
+
+      - name: Run Nykaa
+
+        run: python nykka.py
+
+      - name: Generate Trend Objects
+
+        run: python raw_objects.py
+
+      - name: Commit Changes
+
+        run: |
+          git config --global user.name github-actions
+          git config --global user.email github-actions@github.com
+
+          git add .
+
+          git diff --cached --quiet || git commit -m "Automatic scraping update"
+
+          git push
