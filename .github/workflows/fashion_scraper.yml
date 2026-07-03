@@ -33,8 +33,11 @@ jobs:
       - name: Run Nykaa
         run: python nykka.py
 
-      - name: Generate Trend Objects
+      - name: Generate Raw Objects
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python raw_objects.py
+        
 
       - name: Commit Changes
         run: |
